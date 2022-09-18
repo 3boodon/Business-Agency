@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Section extends Model
 {
     use HasFactory;
-    protected $fillable = ["name", "description"];
+    protected $fillable = ["name", "description", 'isActive'];
     public function documents()
     {
         return $this->hasMany('App\Models\Document');

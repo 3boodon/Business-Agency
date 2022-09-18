@@ -46,6 +46,8 @@
                 <span class="block mt-3 bg-red-50 text-red-600 text-xs rounded-md p-3">{{ $message }}</span>
             @enderror
         </div>
+        {{-- Hidden Active Toggle Mode --}}
+        <input type="checkbox" name="isActive" value="{{ $section->isActive }}" hidden>
         <button type="submit"
             class="w-fit text-start px-[15px] py-[10px] bg-slate-800 text-white  hover:bg-slate-700 rounded-lg font-bold  text-base cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

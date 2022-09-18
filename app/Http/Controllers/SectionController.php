@@ -79,9 +79,12 @@ class SectionController extends Controller
         $data = $request->validate([
             "name" => "required",
             "description" => "required",
+            "isActive" => "boolean",
         ]);
+        // dd($data);
         $section->update($data);
         return redirect(route('dashboard.sections.index'));
+        // return back();
     }
 
     /**
