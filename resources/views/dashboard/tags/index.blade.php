@@ -11,13 +11,13 @@
         <ol class="flex gap-2">
             <li>لوحة التحكم</li>
             <li>/</li>
-            <li>الأقسام</li>
+            <li>الكلمات المفتاحية</li>
 
         </ol>
     </div>
     <form action="{{ route('tags.create') }}" method="POST" class="w-full bg-white p-7">
         @csrf
-        <h3 class="font-bold text-2xl mb-4">إضافة قسم جديد</h3>
+        <h3 class="font-bold text-2xl mb-4">إضافة كلمة جديدة</h3>
         <div class="mb-3">
             <label for="name" class="block mb-2 font-semibold">
                 الكلمة
@@ -40,7 +40,7 @@
             إضافة الكلمة </button>
     </form>
     <div class="w-full bg-white p-7 mt-5">
-        <h3 class="font-bold text-2xl mb-4">كل الأقسام</h3>
+        <h3 class="font-bold text-2xl mb-4">كل الكلمات المفتاحية</h3>
         <table class="w-full ">
             <thead class="[&_th]:text-start  [&_th]:py-4 border-b-[1px] ">
                 <th class="w-[90%]">الكلمة</th>

@@ -7,20 +7,22 @@
 @section('content')
 
     <div class="mb-8">
-        <h3 class="font-bold text-3xl mb-2">{{ $tag->name }}</h3>
+        <h3 class="font-bold text-3xl mb-2">إدارة الكلمات المفتاحية</h3>
         <ol class="flex gap-2">
             <li>لوحة التحكم</li>
             <li>/</li>
+            <li>الكلمات المفتاحية</li>
+            <li>/</li>
             <li>{{ $tag->name }}</li>
             <li>/</li>
-            <li>تعديل الكلمة</li>
+            <li>تعديل</li>
 
         </ol>
     </div>
     <form action="{{ route('tags.update', $tag->id) }}" method="POST" class="w-full bg-white p-7">
         @csrf
         @method('PUT')
-        <h3 class="font-bold text-2xl mb-4">تعديل قسم {{ $tag->name }}</h3>
+        <h3 class="font-bold text-2xl mb-4">تعديل كلمة {{ $tag->name }}</h3>
         <div class="mb-3">
             <label for="name" class="block mb-2 font-semibold">
                 الكلمة

@@ -7,13 +7,15 @@
 @section('content')
 
     <div class="mb-8">
-        <h3 class="font-bold text-3xl mb-2">{{ $section->name }}</h3>
+        <h3 class="font-bold text-3xl mb-2">إدارة الأقسام</h3>
         <ol class="flex gap-2">
             <li>لوحة التحكم</li>
             <li>/</li>
+            <li>الأقسام</li>
+            <li>/</li>
             <li>{{ $section->name }}</li>
             <li>/</li>
-            <li>تعديل القسم</li>
+            <li>تعديل </li>
 
         </ol>
     </div>

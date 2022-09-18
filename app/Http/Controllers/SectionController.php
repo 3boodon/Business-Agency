@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SectionController extends Controller
 {
@@ -51,7 +53,7 @@ class SectionController extends Controller
      */
     public function show(Section $section)
     {
-        //
+        return view('dashboard.sections.show', ["section" => $section]);
     }
 
     /**
@@ -91,6 +93,10 @@ class SectionController extends Controller
     public function destroy(Section $section)
     {
         Section::destroy($section->id);
+        foreach ($section->documents as $document) {
+            Document::destroy($document->id);
+            Storage::disk('public')->delete($document->path);
+        }
         return back();
     }
 }

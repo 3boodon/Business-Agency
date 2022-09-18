@@ -20,7 +20,7 @@
         </li>
         <li>
             <a href="{{ route('dashboard.tags.index') }}"
-                class="block px-[15px] py-[10px]  @if (Route::current()->getName() == 'dashboard.tags.index') bg-slate-800 text-white @endif hover:bg-slate-800 hover:text-violet-50 rounded-lg font-bold  text-base cursor-pointer">
+                class="block px-[15px] py-[10px]  @if (Route::current()->getName() == 'dashboard.tags.index') bg-slate-800 text-white @endif  hover:bg-slate-800 hover:text-violet-50 rounded-lg font-bold  text-base cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5 inline ml-2">
                     <path stroke-linecap="round" stroke-linejoin="round"

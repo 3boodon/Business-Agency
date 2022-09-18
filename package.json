@@ -14,6 +14,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
-        "typeit": "^8.7.0"
+        "typeit": "^8.7.0",
+        "viewerjs": "^1.10.5"
     }
 }

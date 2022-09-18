@@ -62,13 +62,15 @@
             <tbody>
                 @foreach ($sections as $section)
                     <tr class=" odd:bg-slate-50">
-                        <td>{{ $section->name }}</td>
+                        <td><a href="{{ route('sections.show', $section->id) }}" class="font-bold">{{ $section->name }}</a>
+                        </td>
                         <td>{{ $section->description }}</td>
                         <td class="flex">
                             <form action="{{ route('sections.destroy', $section->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
+                                    onclick="confirm('إذا قمت بحذف هذا القسم فسيتم حذف جميع البيانات الخاصة به تماماً .. هل تريد حذفه نهائيا ؟')"
                                     class="w-fit text-start px-[15px] py-[10px]  text-red-700  hover:bg-red-700 hover:text-white rounded-lg font-bold  text-base cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-5 h-5">

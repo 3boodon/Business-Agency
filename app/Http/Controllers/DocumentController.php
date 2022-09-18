@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -35,7 +36,30 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        if ($request->type == 'video') {
+            $videoFields = $request->validate([
+                "section_id" => "required",
+                "document" => "required | mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi",
+                "type" => "required",
+            ]);
+            if ($request->hasFile('document')) {
+                $videoFields['path'] = $request->file('document')->store('videos', 'public');
+            }
+            Document::create($videoFields);
+        } else {
+            $formFields = $request->validate([
+                "section_id" => "required",
+                "document" => "required | image",
+                "type" => "required",
+            ]);
+            if ($request->hasFile('document')) {
+                $formFields['path'] = $request->file('document')->store('images', 'public');
+            }
+            Document::create($formFields);
+        }
+        return back()->with('msg', 'Image Has Been Added Successfully');
     }
 
     /**
@@ -80,6 +104,10 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+
+        Document::destroy($document->id);
+        Storage::disk('public')->delete($document->path);
+
+        return back()->with('msg', 'Video Has Been Deleted Successfully');
     }
 }
