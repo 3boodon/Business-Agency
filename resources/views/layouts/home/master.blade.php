@@ -11,7 +11,7 @@
     @include('layouts.home.partials.libraries')
 </head>
 
-<body class="bg-slate-100">
+<body class="h-full w-full">
 
     @yield('content')
 

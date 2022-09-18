@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Section;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class SectionController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,19 +37,18 @@ class SectionController extends Controller
     {
         $data = $request->validate([
             "name" => "required",
-            "description" => "required",
         ]);
-        Section::create($data);
+        Tag::create($data);
         return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Section  $section
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Section $section)
+    public function show(Tag $tag)
     {
         //
     }
@@ -57,40 +56,39 @@ class SectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Section  $section
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Section $section)
+    public function edit(Tag $tag)
     {
-        return view('dashboard.sections.edit', ["section" => $section]);
+        return view('dashboard.tags.edit', ["tag" => $tag]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Section  $section
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Section $section)
+    public function update(Request $request, Tag $tag)
     {
         $data = $request->validate([
             "name" => "required",
-            "description" => "required",
         ]);
-        $section->update($data);
-        return redirect(route('dashboard.sections.index'));
+        $tag->update($data);
+        return redirect(route('dashboard.tags.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Section  $section
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Section $section)
+    public function destroy(Tag $tag)
     {
-        Section::destroy($section->id);
+        Tag::destroy($tag->id);
         return back();
     }
 }

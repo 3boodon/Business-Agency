@@ -17,7 +17,7 @@
             </header>
             {{-- Actions Block --}}
             @auth
-                <a href="{{ route('dashboard') }}"
+                <a href="{{ route('dashboard.sections.index') }}"
                     class="block w-full text-center text-white bg-blue-700 hover:bg-blue-800 font-bold p-3 rounded-md mt-6">
                     داشبورد
                 </a>
