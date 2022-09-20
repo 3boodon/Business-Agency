@@ -1,44 +1,79 @@
 @extends('layouts.home.master')
 {{-- Page Title --}}
-@section('title', 'هاي رايز')
+@section('title', 'هاي رايز - الموقع الرسمي')
 {{-- Page Description --}}
-@section('description', 'مجرد شاشة مؤقتة لإضافة مستخدم جديد')
-{{-- Page Content --}}
+@section('description',
+    'متخصصون في أعمال الترميمات والتشطيب (بلاط وسيراميك - جبس وجبس بورد - تكسير وترحيل وترميم - دهان
+    ومعالجة وترميم الأبواب الخشبية - بروفايل - براويز وبانوهات)')
+    {{-- Page Content --}}
 @section('content')
-    <main
-        class="w-screen h-screen grid place-items-center px-5 bg-gradient-to-tl from-slate-200 to-slate-100 overflow-scroll  ">
+    @include('home.partials.header')
+    @include('home.partials.hero')
+    @include('home.partials.services')
+    @include('home.partials.footer')
 
-        <div class="w-full max-w-md px-12 py-16 rounded-2xl bg-white shadow-2xl shadow-slate-100">
 
-            {{-- Login Card Header --}}
-            <header class="text-center">
-                <h1 class=" font-bold text-3xl  mb-4  text-slate-700">إنشاء حساب</h1>
-                <p class="text-base  text-slate-500 ">مجرد شاشة مؤقتة لإضافة مستخدم جديد</p>
-            </header>
-            {{-- Actions Block --}}
-            @auth
-                <a href="{{ route('dashboard.sections.index') }}"
-                    class="block w-full text-center text-white bg-blue-700 hover:bg-blue-800 font-bold p-3 rounded-md mt-6">
-                    داشبورد
-                </a>
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button
-                        class="block w-full text-center text-white bg-blue-700 hover:bg-blue-800 font-bold p-3 rounded-md mt-6">
-                        تسجيل خروج
-                    </button>
-                </form>
-            @else
-                <a href="{{ route('register') }}"
-                    class="block w-full text-center text-white bg-blue-700 hover:bg-blue-800 font-bold p-3 rounded-md mt-6">
-                    إنشاء حساب
-                </a>
-                <a href="{{ route('login') }}"
-                    class="block w-full text-center text-white bg-blue-700 hover:bg-blue-800 font-bold p-3 rounded-md mt-6">
-                    تسجيل دخول
-                </a>
 
-            @endauth
-        </div>
-    </main>
+
+
+
+
+
+
+    {{-- Type IT Effect --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+
+    <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+    <script>
+        // Type EFFECT
+        new TypeIt("#hero", {
+                lifeLike: true,
+                loop: true
+            })
+            .type("بلاط وسيراميك")
+            .pause(1200)
+            .delete("بلاط وسيراميك")
+            .pause(200)
+            .type("جبس وجبس بورد")
+            .pause(1200)
+            .delete("جبس وجبس بورد")
+            .pause(200)
+            .type("تكسير وترحيل وترميم")
+            .pause(1200)
+            .delete("تكسير وترحيل وترميم")
+            .pause(200)
+            .type("دهان ومعالجة وترميم الأبواب الخشبية ")
+            .pause(1200)
+            .delete("دهان ومعالجة وترميم الأبواب الخشبية ")
+            .pause(200)
+            .type("بروفايل ")
+            .pause(1200)
+            .delete("بروفايل ")
+            .pause(200)
+            .type("براويز وبانوهات")
+            .pause(1200)
+            .delete("براويز وبانوهات")
+            .pause(200)
+            .go();
+
+        // GSAP SCROLL EFFECT
+        gsap.registerPlugin(ScrollTrigger);
+        const container = document.querySelector('.container')
+        let sections = gsap.utils.toArray(".panel");
+
+        gsap.to(sections, {
+            x: () => (container.scrollWidth - document.documentElement.clientWidth) + "px",
+            // xPercent: 80 * (sections.length - 1),
+            ease: "ease-out",
+            scrollTrigger: {
+                trigger: ".container",
+                pin: true,
+                scrub: 1,
+                // snap: 1 / (sections.length - 1),
+                end: () => "+=" + document.querySelector(".container").offsetWidth
+            }
+        });
+    </script>
+    {{-- End Type IT Effect --}}
 @endsection

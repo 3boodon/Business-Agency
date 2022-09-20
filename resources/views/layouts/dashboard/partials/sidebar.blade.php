@@ -1,7 +1,6 @@
 <aside class="w-[290px] h-[92%] bg-white px-6 py-10 fixed top-[82px] right-0 border-l-[1px] border-slate-200 ">
-    <div class="w-20 mx-auto grid place-items-center bg-slate-50 rounded-full border-4  border-slate-100  ">
-        <a href="/"><img class="w-full h-full ob object-center" src="{{ asset('assets/images/1.png') }}"
-                alt="شعار المؤسسة"></a>
+    <div class="w-20 mx-auto grid place-items-center ">
+        <a href="/"><img class="h-20  object-center" src="{{ asset('graphics.png') }}" alt="شعار المؤسسة"></a>
     </div>
     <h1 class="text-xl font-bold text-center mt-3 text-slate-800">{{ auth()->user()->name }}</h1>
     <p class="font-normal text-slate-400 text-center">{{ auth()->user()->email }}</p>

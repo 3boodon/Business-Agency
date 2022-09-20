@@ -46,9 +46,9 @@
                         <span class="block mt-3 bg-red-50 text-red-600 text-xs rounded-md p-3">{{ $message }}</span>
                     @enderror
                 </div>
-                <p class="text-base  text-slate-500 mb-4 ">لا تملك حساباً ؟ <a href="{{ route('register') }}"
+                {{-- <p class="text-base  text-slate-500 mb-4 ">لا تملك حساباً ؟ <a href="{{ route('register') }}"
                         class="text-blue-700 font-bold">إنشاء
-                        حساب</a></p>
+                        حساب</a></p> --}}
 
 
 

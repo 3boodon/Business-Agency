@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <title>@yield('title', 'هاي رايز')</title>
     @include('layouts.dashboard.partials.libraries')
+
 </head>
 
 <body class="h-screen w-screen bg-slate-100 overflow-x-hidden">
@@ -17,7 +18,11 @@
     <nav
         class="w-full h-[82px] mx-h-[82px] bg-white flex justify-between items-stretch border-b-[1px]  border-slate-200 shadow-lg shadow-slate-100 fixed top-0">
         <div class="w-[290px] px-7 flex justify-between items-center border-l-[1px] border-slate-200 ">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
+            <div class="h-full flex gap-5 items-center justify-center">
+                <img src="{{ asset('graphics.png') }}" alt="logo" class="h-2/5">
+                <h1 class="font-bold text-lg">هاي رايز</h1>
+
+            </div>
             <button class="bg-slate-50 p-3 rounded-full fill-slate-800">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5">

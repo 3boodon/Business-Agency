@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -9,9 +10,8 @@ use App\Models\Document;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('home.index');
-})->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/sections/{section}', [PageController::class, 'show'])->name('section.details');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'sections'])->name('dashboard.sections.index');
@@ -38,8 +38,8 @@ Route::middleware('auth')->group(function () {
 
 
 // Auth Routes 
-Route::get('/register', [UserController::class, 'create'])->name('register'); // Show register form
-Route::post('/users', [UserController::class, 'store'])->name('store_user'); // Create new user
+// Route::get('/register', [UserController::class, 'create'])->name('register'); // Show register form
+// Route::post('/users', [UserController::class, 'store'])->name('store_user'); // Create new user
 Route::post('/logout', [UserController::class, 'logout'])->name('logout'); // Log user out
 Route::get('/login', [UserController::class, 'login'])->name('login'); // Show Login form
 Route::get('/users/authenticate', [UserController::class, 'authenticate'])->name('validate_user'); // Log In User
