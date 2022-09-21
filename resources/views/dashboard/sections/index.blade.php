@@ -66,11 +66,11 @@
                         </td>
                         <td>{{ $section->description }}</td>
                         <td class="flex items-center">
-                            <form action="{{ route('sections.destroy', $section->id) }}" method="POST">
+                            <form action="{{ route('sections.destroy', $section->id) }}" method="POST"
+                                onsubmit="confirm('إذا قمت بحذف هذا القسم فسيتم حذف جميع البيانات الخاصة به تماماً .. هل تريد حذفه نهائيا ؟')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
-                                    onclick="confirm('إذا قمت بحذف هذا القسم فسيتم حذف جميع البيانات الخاصة به تماماً .. هل تريد حذفه نهائيا ؟')"
                                     class="w-fit text-start px-[15px] py-[10px]  text-red-700  hover:bg-red-700 hover:text-white rounded-lg font-bold  text-base cursor-pointer">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -94,18 +94,19 @@
 
 
                             {{-- Toggle Section --}}
-                            <form action="{{ route('sections.update', $section->id) }}" method="POST" dir="ltr"
+                            <form action="{{ route('sections.state', $section->id) }}" method="POST" dir="ltr"
                                 id="toggleForm">
                                 @csrf
                                 @method('PUT')
                                 {{-- Hidden Fields --}}
-                                <input type="text" name="name" value="{{ $section->name }}" hidden readonly>
-                                <textarea type="text" name="description" hidden readonly>{{ $section->description }}</textarea>
+                                {{-- <input type="hidden" name="name" value="{{ $section->name }}">
+                                <textarea name="description" hidden>{{ $section->description }}</textarea> --}}
                                 {{-- Hidden Fields --}}
-                                <label for="{{ $section->id }}" class="inline-flex relative items-center cursor-pointer">
-                                    <input type="hidden" name="isActive" value="0">
-                                    <input type="checkbox" id="{{ $section->id }}" name="isActive" value="1"
-                                        class="sr-only peer toggleButton" @checked(old('isActive', $section->isActive))>
+                                <label for="{{ $section->id . $section->name }}"
+                                    class="inline-flex relative items-center cursor-pointer">
+                                    {{-- <input type="hidden" name="isActive" value="0"> --}}
+                                    <input type="checkbox" id="{{ $section->id . $section->name }}" name="isActive"
+                                        class="sr-only peer toggleButton" @checked($section->isActive)>
                                     <div
                                         class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-slate-300 dark:peer-focus:ring-slate-900 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-slate-600">
                                     </div>
@@ -129,8 +130,13 @@
 
 
     <script>
-        $('.toggleButton').change(function() {
-            $('#toggleForm').submit()
-        })
+        $('.toggleButton').each(function(index) {
+            $(this).change(function() {
+                $(this).closest('form').submit()
+            })
+        });
+        // $('.toggleButton').change(function() {
+        //     console.log($('.toggleButton'));
+        // })
     </script>
 @endsection

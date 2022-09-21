@@ -85,11 +85,12 @@
                     <tr class=" odd:bg-slate-50 h-5 ">
                         @if ($doc->type == 'video')
                             <td>
-                                <video src="{{ asset('uploads/' . $doc->path) }}" controls></video>
+                                <video src="{{ asset('uploads/' . $doc->path) }}" controls class="h-24"></video>
                             </td>
                         @else
                             <td>
-                                <img src="{{ asset('uploads/' . $doc->path) }}" alt="{{ $section->name }}" />
+                                <img src="{{ asset('uploads/' . $doc->path) }}" alt="{{ $section->name }}"
+                                    class="h-24" />
                             </td>
                         @endif
                         <td>{{ $doc->path }}</td>

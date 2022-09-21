@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -49,7 +50,7 @@ class UserController extends Controller
     //Show Login Form
     public function login()
     {
-        return view('users.login');
+        return view('users.login', ["tags" => Tag::all()]);
     }
     //Log In User
     public function authenticate(Request $request)

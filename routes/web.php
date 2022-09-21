@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/dashboard/sections', [SectionController::class, 'store'])->name('sections.create');
     Route::get('/dashboard/sections/{section}/edit', [SectionController::class, 'edit'])->name('sections.edit');
     Route::put('/dashboard/sections/{section}', [SectionController::class, 'update'])->name('sections.update');
+    Route::put('/dashboard/sections/{section}', [SectionController::class, 'changeState'])->name('sections.state');
     Route::delete('/dashboard/sections/{section}', [SectionController::class, 'destroy'])->name('sections.destroy');
     Route::get('/dashboard/sections/{section}', [SectionController::class, 'show'])->name('sections.show');
 

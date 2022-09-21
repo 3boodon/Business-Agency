@@ -87,6 +87,14 @@ class SectionController extends Controller
         // return back();
     }
 
+    public function changeState(Request $request, Section $section)
+    {
+        // dd($section, $request);
+        $section->isActive = !$section->isActive;
+        $section->save();
+        return redirect(route('dashboard.sections.index'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
