@@ -39,8 +39,8 @@ Route::middleware('auth')->group(function () {
 
 
 // Auth Routes 
-// Route::get('/register', [UserController::class, 'create'])->name('register'); // Show register form
-// Route::post('/users', [UserController::class, 'store'])->name('store_user'); // Create new user
+Route::get('/register', [UserController::class, 'create'])->name('register'); // Show register form
+Route::post('/users', [UserController::class, 'store'])->name('store_user'); // Create new user
 Route::post('/logout', [UserController::class, 'logout'])->name('logout'); // Log user out
 Route::get('/login', [UserController::class, 'login'])->name('login'); // Show Login form
 Route::get('/users/authenticate', [UserController::class, 'authenticate'])->name('validate_user'); // Log In User

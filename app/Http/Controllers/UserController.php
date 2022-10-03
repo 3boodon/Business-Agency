@@ -50,7 +50,7 @@ class UserController extends Controller
     //Show Login Form
     public function login()
     {
-        return view('users.login', ["tags" => Tag::all()]);
+        return view('users.login');
     }
     //Log In User
     public function authenticate(Request $request)

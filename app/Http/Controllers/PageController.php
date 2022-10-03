@@ -12,14 +12,12 @@ class PageController extends Controller
     {
         return view('home.index', [
             "sections" => Section::all(),
-            "tags" => Tag::all(),
         ]);
     }
     public function show(Section $section)
     {
         return view('sections.show', [
             "section" => Section::findOrFail($section->id),
-            "tags" => Tag::all(),
         ]);
     }
 }
