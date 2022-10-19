@@ -83,7 +83,7 @@ class SectionController extends Controller
         ]);
         // dd($data);
         $section->update($data);
-        return redirect(route('dashboard.sections.index'));
+        return to_route('dashboard.sections.index');
         // return back();
     }
 
@@ -92,7 +92,7 @@ class SectionController extends Controller
         // dd($section, $request);
         $section->isActive = !$section->isActive;
         $section->save();
-        return redirect(route('dashboard.sections.index'));
+        return to_route('dashboard.sections.index');
     }
 
     /**
